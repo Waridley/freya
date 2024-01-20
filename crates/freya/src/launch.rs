@@ -194,8 +194,7 @@ pub fn launch_cfg<T: 'static + Clone + Send>(app: AppComponent, config: LaunchCo
             .with_max_level(Level::TRACE)
             .finish();
 
-        tracing::subscriber::set_global_default(subscriber)
-            .expect("Setting default subscriber failed");
+        tracing::subscriber::set_global_default(subscriber).ok();
     }
 
     let (vdom, mutations_notifier, hovered_node) = {
